@@ -24,7 +24,7 @@ int myMenu(char yourList[5][15]){
 void bubbleSort(int lista[], int length){
     printf("Começando o Bubble Sort...\n");
     for(int cont = 1; cont < length; cont++){
-        for(int i = 0; i < cont; i++){
+        for(int i = 0; i < length - cont; i++){
         if(lista[i] > lista[i+1]){
             int aux = lista[i];
             lista[i] = lista[i+1];
@@ -137,9 +137,9 @@ void merge(int lista[], int length){
 void mergeSort(int lista[], int length){
     printf("Começando o Merge Sort..\n");
     int l = lista[0];
-    printf("%d", l);
+    // printf("%d", l);
     int r = lista[length-1];
-    printf("%d", r);
+    // printf("%d", r);
     int m = lista[length/2];
     printf("%d", m);
 
