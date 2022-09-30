@@ -5,6 +5,7 @@
 #ifndef tools
 #define tools
 
+
 // bloco de gerar números aleatórios
 
 int* generateRandomList(int TAM) {
@@ -44,6 +45,14 @@ void printArray(int array[], int size) {
 
 }
 
+// bloco print do bublle
+
+void bubble(void){
+
+    printf("Parabéns! Você ordenou sua lista usando Bubble Sort!\nLista ordenada: ");
+
+}
+
 
 //bloco do Bubble Sort
 
@@ -62,15 +71,21 @@ void bubbleSort(int lista[], int length) {
             }
         }
     }
-    
-    printf("Parabéns! Você ordenou sua lista usando Bubble Sort!\nLista ordenada: ");
-    
-    printArray(lista, length);
 
-    printf("\nBubble Sort finalizado!");
+    bubble();
+
+    printArray(lista, length);
 
 }
 
+
+// bloco print do insertion
+
+void insertion(void){
+
+    printf("Parabéns! Você ordenou sua lista usando Insertion Sort!\nLista ordenada: ");
+
+}
 
 // bloco do Insertion Sort
 
@@ -90,13 +105,21 @@ void insertionSort(int lista[], int length) {
 
         lista[i +1] = aux;
     }
-    printf("Parabéns! Você ordenou sua lista usando Insertion Sort!\nLista ordenada: ");
     
+    insertion();
+
     printArray(lista, length);
 
-    printf("\nInsertion Sort finalizado!");
-
 } 
+
+
+// bloco do print do selection
+
+void selection(void){
+
+    printf("Parabéns! Você ordenou sua lista usando Selection Sort!\nLista ordenada: ");
+
+}
 
 
 // bloco do Seletion Sort
@@ -121,101 +144,94 @@ void selectionSort(int lista[], int length) {
             lista[menor] = troca;
         }
     } 
-    printf("Parabéns! Você ordenou sua lista usando Selection Sort!\nLista ordenada: ");
 
+    insertion();
+    
     printArray(lista, length);
-
-    printf("\nSelection Sort finalizado!");
 
 }
 
+// bloco do print do merge
+void printMerge(void){
+
+    printf("Parabéns! Você ordenou sua lista usando Merge Sort!\nLista ordenada: ");
+
+}
 
 // bloco do Merge
 
-void merge(int lista[], int l, int m, int r)
-{
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
- 
-    // listas temporárias
-    int L[n1], R[n2];
- 
-    // passar os elementos para as variáveis temporárias L[] and R[] */
-    for (i = 0; i < n1; i++) {
-        L[i] = lista[l + i];
-    }
+// Merge two subarrays L and M into arr
+void merge(int lista[], int p, int q, int r) {
 
-    for (j = 0; j < n2; j++) {
-        R[j] = lista[m + 1 + j];
-    }
- 
-    // passar as listas temporárias de volta para a original
-    i = 0; // Index inicial da primeira  sublista
-    j = 0; // Index inicial da primeira  sublista
-    k = l; // Initial index of merged subarray
+  // Create L ← A[p..q] and M ← A[q+1..r]
+  int n1 = q - p + 1;
+  int n2 = r - q;
 
-    while (i < n1 && j < n2) {
+  int L[n1], M[n2];
 
-        if (L[i] <= R[j]) {
-            lista[k] = L[i];
-            i++;
+  for (int i = 0; i < n1; i++)
+    L[i] = lista[p + i];
+  for (int j = 0; j < n2; j++)
+    M[j] = lista[q + 1 + j];
 
-        } else {
-            lista[k] = R[j];
-            j++;
-        }
+  // Maintain current index of sub-arrays and main array
+  int i, j, k;
+  i = 0;
+  j = 0;
+  k = p;
 
-        k++;
+  // Until we reach either end of either L or M, pick larger among
+  // elements L and M and place them in the correct position at A[p..r]
+  while (i < n1 && j < n2) {
+    if (L[i] <= M[j]) {
+      lista[k] = L[i];
+      i++;
+    } else {
+      lista[k] = M[j];
+      j++;
     }
- 
-    /* Copy the remaining elements of L[], if there
-    are any */
-    while (i < n1) {
-        lista[k] = L[i];
-        i++;
-        k++;
-    }
- 
-    /* Copy the remaining elements of R[], if there
-    are any */
-    while (j < n2) {
-        lista[k] = R[j];
-        j++;
-        k++;
-    }
+    k++;
+  }
+
+  // When we run out of elements in either L or M,
+  // pick up the remaining elements and put in A[p..r]
+  while (i < n1) {
+    lista[k] = L[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) {
+    lista[k] = M[j];
+    j++;
+    k++;
+  }
 }
- 
-/* l is for left index and r is right index of the
-sub-array of arr to be sorted */
 
-
-// bloco do Merge Sort
-
+// Divide the array into two subarrays, sort them and merge them
 void mergeSort(int lista[], int l, int r) {
 
-    if (l < r) {
-        // Same as (l+r)/2, but avoids overflow for
-        // large l and h
-        int m = l + (r - l) / 2;
- 
-        // Sort first and second halves
-        mergeSort(lista, l, m);
-        mergeSort(lista, m + 1, r);
- 
-        merge(lista, l, m, r);
-        
-        int length;
+  if (l < r) {
 
-        length = lengthArray(lista);
+    // m is the point where the array is divided into two subarrays
+    int m = l + (r - l) / 2;
 
-        printf("Parabéns! Você ordenou sua lista usando Merge Sort!\nLista ordenada: ");
+    mergeSort(lista, l, m);
+    mergeSort(lista, m + 1, r);
 
-        printArray(lista, length);
+    // Merge the sorted subarrays
+    merge(lista, l, m, r);
+  }
 
-        printf("\nSelection Sort finalizado!");
+}
 
-    }
+
+// bloco do print do quick sort
+
+void quick(void){
+
+  printf("Parabéns! Você ordenou sua lista usando Quick Sort!\nLista ordenada: ");
+
 }
 
 
@@ -280,11 +296,9 @@ void quickSort(int lista[], int low, int high) {
 
     length = lengthArray(lista);
 
-    printf("Parabéns! Você ordenou sua lista usando Merge Sort!\nLista ordenada: ");
+    quick();
 
     printArray(lista, length);
-
-    printf("\nSelection Sort finalizado!");
 
   }
 }
