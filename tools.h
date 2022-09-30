@@ -228,7 +228,7 @@ void mergeSort(int lista[], int l, int r) {
 
 // bloco do print do quick sort
 
-void quick(void){
+void printQuick(void){
 
   printf("Parabéns! Você ordenou sua lista usando Quick Sort!\nLista ordenada: ");
 
@@ -291,14 +291,6 @@ void quickSort(int lista[], int low, int high) {
     
     // recursive call on the right of pivot
     quickSort(lista, pi + 1, high);
-
-    int length;
-
-    length = lengthArray(lista);
-
-    quick();
-
-    printArray(lista, length);
 
   }
 }
