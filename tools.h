@@ -9,7 +9,7 @@
 
 int* generateRandomList(int TAM) {
 
-    static int result[] = {}; //alocada estaticamente
+    static int result[] = {}; 
 
     printf("Sua lista desordenada é: ");
 
@@ -18,8 +18,10 @@ int* generateRandomList(int TAM) {
         printf("%2d", result[i]);
     }
 
-    return result; //estava alocado na minha stack, ideal seria alocar dinamicamente
+    return result; 
+
 }
+
 
 // função para descobrir o tamanho da minha lista
 
@@ -33,10 +35,13 @@ int lengthArray(int lista[]) {
 // função para printar os elementos da minha lista
 
 void printArray(int array[], int size) {
+
   for (int i = 0; i < size; ++i) {
     printf("%d  ", array[i]);
   }
+
   printf("\n");
+
 }
 
 
@@ -90,6 +95,7 @@ void insertionSort(int lista[], int length) {
     printArray(lista, length);
 
     printf("\nInsertion Sort finalizado!");
+
 } 
 
 
@@ -100,6 +106,7 @@ void selectionSort(int lista[], int length) {
     printf("Começando o Selection Sort..\n");
 
     for(int aux = 0; aux < length; aux++) {
+
         int menor = aux;
 
         for(int temp = aux + 1; temp < length; temp++) {
@@ -131,10 +138,10 @@ void merge(int lista[], int l, int m, int r)
     int n1 = m - l + 1;
     int n2 = r - m;
  
-    /* create temp arrays */
+    // listas temporárias
     int L[n1], R[n2];
  
-    /* Copy data to temp arrays L[] and R[] */
+    // passar os elementos para as variáveis temporárias L[] and R[] */
     for (i = 0; i < n1; i++) {
         L[i] = lista[l + i];
     }
@@ -143,19 +150,22 @@ void merge(int lista[], int l, int m, int r)
         R[j] = lista[m + 1 + j];
     }
  
-    /* Merge the temp arrays back into arr[l..r]*/
-    i = 0; // Initial index of first subarray
-    j = 0; // Initial index of second subarray
+    // passar as listas temporárias de volta para a original
+    i = 0; // Index inicial da primeira  sublista
+    j = 0; // Index inicial da primeira  sublista
     k = l; // Initial index of merged subarray
 
     while (i < n1 && j < n2) {
+
         if (L[i] <= R[j]) {
             lista[k] = L[i];
             i++;
+
         } else {
             lista[k] = R[j];
             j++;
         }
+
         k++;
     }
  
@@ -211,11 +221,13 @@ void mergeSort(int lista[], int l, int r) {
 
 // bloco do Quick Sort
 
-// function to swap elements
+// função para trocar elementos
 void swap(int *a, int *b) {
-  int t = *a;
-  *a = *b;
-  *b = t;
+
+    int t = *a;
+    *a = *b;
+    *b = t;
+
 }
 
 // function to find the partition position
