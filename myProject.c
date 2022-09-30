@@ -11,7 +11,7 @@
 int main(){
 
     int *unsortedList = generateRandomList(TAM);
-
+    int selecao;
     do{ 
         printf("\nEscolha uma das opções de ordenação abaixo: \n");
         printf("\nDigite 1 para Bubble Sort");
@@ -19,9 +19,10 @@ int main(){
         printf("\nDigite 3 para Selection Sort");
         printf("\nDigite 4 para Merge Sort");
         printf("\nDigite 5 para Quick Sort\n");
+        printf("\nDigite 0 para sair\n");
         printf("\nSua escolha é: ");
 
-        int selecao = scanf("%d", &selecao);
+        scanf("%d", &selecao);
 
         switch ( selecao ) {
         case 1:
@@ -34,16 +35,22 @@ int main(){
             selectionSort(unsortedList, TAM);
             break;
         case 4:
-            mergeSort(unsortedList, 0, TAM);
+            mergeSort(unsortedList, 0, TAM-1);
+            printf("Começando o Selection Sort..\n");
+            printMerge();
+            printArray(unsortedList, TAM);
             break;
         case 5:
             quickSort(unsortedList, 0, TAM);
             break;
         case 0:
+            exit(0);
             break;
         default:
             printf("Você deve escolher entre as opções 1 e 5!");
             break;
         }
-    } while (!0);    
+    } while (selecao != 0);    
+
+    free(unsortedList);
 }
