@@ -36,12 +36,15 @@ int main(){
             break;
         case 4:
             mergeSort(unsortedList, 0, TAM-1);
-            printf("Começando o Selection Sort..\n");
+            printf("Começando o Merge Sort..\n");
             printMerge();
             printArray(unsortedList, TAM);
             break;
         case 5:
-            quickSort(unsortedList, 0, TAM);
+            quickSort(unsortedList, 0, TAM-1);
+            printf("Começando o Quick Sort..\n");
+            printQuick();
+            printArray(unsortedList, TAM);
             break;
         case 0:
             exit(0);
