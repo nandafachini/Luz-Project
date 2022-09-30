@@ -5,27 +5,6 @@
 #ifndef tools
 #define tools
 
-
-// bloco do meu Menu
-
-int myMenu(char yourList[5][15]) {
-    int i;
-    int entrada;
-
-    printf("\nBem-vindo ao menu de opções de ordenação!\nEscolha dentre as opções abaixo\n");
-
-    for(i=0; i<5; i++) {
-        printf("Digite %d para a opção %s\n", i+1, yourList[i]);
-    }
-
-    printf("Eu quero a opção: ");
-    scanf("%d", &entrada);
-    printf("Opção escolhida: %s\n", yourList[entrada-1]);
-    return entrada-1; 
-
-}
-
-
 // bloco de gerar números aleatórios
 
 int* generateRandomList(int TAM) {
